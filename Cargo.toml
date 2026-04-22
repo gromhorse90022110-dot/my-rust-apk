@@ -1,29 +1,17 @@
-use macroquad::prelude::*;
+[package]
+name = "my_app"
+version = "0.2.0"
+edition = "2021"
 
-// Эта строчка нужна, чтобы Android понимал, как запускать Macroquad
-#[no_mangle]
-pub extern "C" fn main_android() {}
+[lib]
+name = "my_app"
+path = "src/lib.rs"
+crate-type = ["cdylib"]
 
-#[macroquad::main("my_app")]
-async fn main() {
-    let mut color = BLUE;
+[dependencies]
+macroquad = "0.4"
+rand = "0.8"
 
-    loop {
-        clear_background(BLACK);
-
-        if is_mouse_button_pressed(MouseButton::Left) {
-            color = Color::new(
-                rand::gen_range(0.0, 1.0),
-                rand::gen_range(0.0, 1.0),
-                rand::gen_range(0.0, 1.0),
-                1.0,
-            );
-        }
-
-        draw_circle(screen_width() / 2.0, screen_height() / 2.0, 100.0, color);
-        draw_text("TAP TO CHANGE COLOR", 20.0, 50.0, 40.0, WHITE);
-        draw_text("RUST VERSION 2.0", 20.0, 100.0, 30.0, GREEN);
-
-        next_frame().await
-    }
-}
+[package.metadata.android]
+build_targets = ["aarch64-linux-android"]
+target_sdk_version = 33
