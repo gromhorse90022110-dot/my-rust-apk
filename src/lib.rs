@@ -1,6 +1,6 @@
 use macroquad::prelude::*;
 
-#[macroquad::main("RustGame")]
+#[macroquad::main("my_app")]
 async fn main() {
     let mut color = BLUE;
 
