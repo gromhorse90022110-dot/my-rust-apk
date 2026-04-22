@@ -4,6 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [lib]
+name = "my_app"
+path = "src/lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
@@ -11,4 +13,4 @@ ndk-glue = "0.7"
 
 [package.metadata.android]
 build_targets = ["aarch64-linux-android"]
-# Убираем все лишнее, пусть использует стандартные настройки сервера
+target_sdk_version = 33
