@@ -23,7 +23,7 @@ async fn main() {
 
         // Рисуем текст-инструкцию
         draw_text("TAP TO CHANGE COLOR", 20.0, 50.0, 40.0, WHITE);
-        draw_text(&format!("RUST VERSION 2.0"), 20.0, 100.0, 30.0, GREEN);
+        draw_text("RUST VERSION 2.0", 20.0, 100.0, 30.0, GREEN);
 
         next_frame().await
     }
