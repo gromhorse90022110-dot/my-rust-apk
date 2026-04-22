@@ -1,8 +1,11 @@
 use ndk_glue;
 
+#[no_mangle]
 #[ndk_glue::main]
 fn main() {
-    // Это база для работы APK на Rust
-    println!("Приложение Rust запущено!");
+    loop {
+        if let Some(_event) = ndk_glue::poll_events() {
+            // Приложение будет работать, пока вы его не закроете
+        }
+    }
 }
-
