@@ -1,6 +1,6 @@
 [package]
 name = "my_app"
-version = "0.2.0"
+version = "0.2.2"
 edition = "2021"
 
 [lib]
@@ -11,10 +11,10 @@ crate-type = ["cdylib"]
 [dependencies]
 macroquad = "0.4"
 rand = "0.8"
-# Добавляем этот важный компонент
-ndk-glue = "0.7"
 
 [package.metadata.android]
 build_targets = ["aarch64-linux-android"]
 target_sdk_version = 33
 min_sdk_version = 21
+# Добавляем название для Android-активности
+apk_name = "my_app"
