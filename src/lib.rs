@@ -1,9 +1,5 @@
 use macroquad::prelude::*;
 
-// Упрощенная "магия" для запуска на Android
-#[no_mangle]
-pub extern "C" fn ANativeActivity_onCreate() {}
-
 #[macroquad::main("my_app")]
 async fn main() {
     let mut color = BLUE;
@@ -22,7 +18,7 @@ async fn main() {
 
         draw_circle(screen_width() / 2.0, screen_height() / 2.0, 100.0, color);
         draw_text("TAP TO CHANGE COLOR", 20.0, 50.0, 40.0, WHITE);
-        draw_text("VERSION 2.1", 20.0, 100.0, 30.0, GREEN);
+        draw_text("VERSION 2.2 - STABLE", 20.0, 100.0, 30.0, GREEN);
 
         next_frame().await
     }
