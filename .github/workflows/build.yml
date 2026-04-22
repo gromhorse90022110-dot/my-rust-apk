@@ -6,27 +6,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Setup Rust
-        uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@stable
         with:
           targets: aarch64-linux-android
+      - uses: android-actions/setup-android@v3
       
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
-      # Устанавливаем именно ту версию, которую требует cargo-apk
-      - name: Install Android Platform 30
-        run: sdkmanager "platforms;android-30" "build-tools;30.0.3"
-
-      - name: Build APK
+      - name: Build
         run: |
           cargo install cargo-apk
+          # Собираем обычный билд
           cargo apk build
           
-      - name: Upload APK
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: app-release
+          name: app-debug
           path: target/debug/apk/*.apk
           
