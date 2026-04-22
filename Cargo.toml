@@ -1,12 +1,14 @@
 [package]
 name = "my_app"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
 
-[dependencies]
-ndk-glue = "0.7.0"
 [lib]
 crate-type = ["cdylib"]
 
+[dependencies]
+ndk-glue = "0.7"
+
 [package.metadata.android]
 build_targets = ["aarch64-linux-android"]
+sdk_version = 33
