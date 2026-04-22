@@ -21,11 +21,11 @@ jobs:
       - name: Build APK
         run: |
           cargo install cargo-apk
-          cargo apk build --release
+          cargo apk build
           
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-release
-          path: target/release/apk/*.apk
+          path: target/debug/apk/*.apk
           
