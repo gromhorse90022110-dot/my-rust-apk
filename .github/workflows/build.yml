@@ -6,22 +6,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
+      
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
         with:
           targets: aarch64-linux-android
       
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
-      
-      - name: Install Platform 33
-        run: sdkmanager "platforms;android-33"
 
-      - name: Build
+      - name: Build APK
         run: |
           cargo install cargo-apk
           cargo apk build --release
           
-      - name: Upload
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: app-release
