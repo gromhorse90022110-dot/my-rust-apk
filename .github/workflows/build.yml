@@ -12,12 +12,15 @@ jobs:
         with:
           targets: aarch64-linux-android
       
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Install Android Platform
+        run: |
+          # Устанавливаем именно 30-ю платформу, которую требует cargo-apk
+          sdkmanager "platforms;android-30" "build-tools;30.0.3"
 
       - name: Build APK
         run: |
           cargo install cargo-apk
+          # Явно указываем использовать установленную платформу
           cargo apk build --release
           
       - name: Upload APK
