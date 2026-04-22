@@ -9,10 +9,18 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: aarch64-linux-android
+      
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+      
+      - name: Install Platform 33
+        run: sdkmanager "platforms;android-33"
+
       - name: Build
         run: |
           cargo install cargo-apk
           cargo apk build --release
+          
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
