@@ -11,5 +11,4 @@ ndk-glue = "0.7"
 
 [package.metadata.android]
 build_targets = ["aarch64-linux-android"]
-sdk_version = 33
-min_sdk_version = 21
+# Убираем все лишнее, пусть использует стандартные настройки сервера
